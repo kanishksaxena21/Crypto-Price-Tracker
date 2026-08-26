@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naruto Uzumaki - Shinobi Portfolio</title>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    header {
+      background-color: #0b2239;
+      color: #ffffff;
+      padding: 18px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-subtitle {
+      font-size: 14px;
+      color: #cbd5e1;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.2s ease;
+    }
+
+    nav a.active {
+      color: #facc15;
+      border-bottom: 2px solid #facc15;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: #eaf2fc;
+      padding: 60px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-text {
+      max-width: 540px;
+    }
+
+    .hero-text h1 {
+      font-size: 34px;
+      color: #0b2239;
+      margin-bottom: 6px;
+      font-weight: 800;
+    }
+
+    .hero-text h2 {
+      font-size: 22px;
+      color: #1e5ba8;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .hero-text p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #334155;
+      margin-bottom: 24px;
+    }
+
+    .btn-download {
+      background-color: #0b2239;
+      color: #ffffff;
+      border: none;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-download:hover {
+      background-color: #163657;
+    }
+
+    .hero-image-container {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 8px solid #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .hero-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Main Content Container */
+    main {
+      padding: 40px 80px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0b2239;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title i {
+      color: #1e5ba8;
+      font-size: 16px;
+    }
+
+    /* Grid Rows */
+    .row-three-col {
+      display: grid;
+      grid-template-columns: 1fr 0.7fr 1.5fr;
+      gap: 40px;
+    }
+
+    .row-two-col {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 40px;
+    }
+
+    /* About Section */
+    .about-text {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    /* Skills List */
+    .skills-list {
+      list-style-type: disc;
+      padding-left: 18px;
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.7;
+    }
+
+    /* Education Table */
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    table, th, td {
+      border: 1px solid #cbd5e1;
+    }
+
+    th {
+      font-weight: 700;
+      color: #0b2239;
+      padding: 9px 12px;
+      background-color: #ffffff;
+    }
+
+    td {
+      padding: 9px 12px;
+      color: #334155;
+    }
+
+    /* Projects Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 16px;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 120px;
+    }
+
+    .card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0b2239;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 12.5px;
+      color: #475569;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .card a {
+      font-size: 12.5px;
+      color: #1e5ba8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #0b2239;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-size: 13px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .btn-submit {
+      background-color: #0b2239;
+      color: #ffffff;
+      border: none;
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-reset {
+      background-color: #cbd5e1;
+      color: #334155;
+      border: none;
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Social Icons */
+    .social-icons {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      font-size: 26px;
+      text-decoration: none;
+    }
+
+    .social-icons .fa-linkedin { color: #0077b5; }
+    .social-icons .fa-github { color: #1e293b; }
+    .social-icons .fa-envelope { color: #ea4335; }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      background-color: #0b2239;
+      color: #ffffff;
+      text-align: center;
+      padding: 18px 20px;
+      font-size: 13.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div>
+      <div class="brand-title">Naruto Uzumaki</div>
+      <div class="brand-subtitle">Seventh Hokage</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hi, I'm Naruto Uzumaki</h1>
+      <h2>Seventh Hokage & Shinobi Hero</h2>
+      <p>I am a passionate ninja dedicated to protecting the Hidden Leaf Village and fostering peace across the Five Great Shinobi Countries. Believe it!</p>
+      <button class="btn-download">Download Ninja Resume</button>
+    </div>
+    <div class="hero-image-container">
+      <img src="C:\Users\kanis\OneDrive\Desktop\FRONTEND\images\naruto.jpg" alt="Naruto Uzumaki">
+    </div>
+  </section>
+
+  
+  <main>
+    
+    <div class="row-three-col">
+      <div id="about">
+        <h3 class="section-title"><i class="fa-solid fa-user"></i> About Me</h3>
+        <p class="about-text">
+          I never give up, and I never go back on my word—that is my nindo, my ninja way! I enjoy collaborating with teammates, learning legendary jutsu, and working on impactful missions for the village.
+        </p>
+      </div>
+
+      <div id="skills">
+        <h3 class="section-title"><i class="fa-solid fa-code"></i> Skills</h3>
+        <ul class="skills-list">
+          <li>Shadow Clone Jutsu</li>
+          <li>Rasengan & Rasenshuriken</li>
+          <li>Sage Mode</li>
+          <li>Nine-Tails Chakra Control</li>
+          <li>Talk no Jutsu</li>
+          <li>Team Leadership</li>
+        </ul>
+      </div>
+
+      <div id="education">
+        <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Qualification</th>
+                <th>Institute</th>
+                <th>Year</th>
+                <th>Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hokage Inauguration</td>
+                <td>Konohagakure Council</td>
+                <td>2017</td>
+                <td>100%</td>
+              </tr>
+              <tr>
+                <td>Sage Arts Training</td>
+                <td>Mount Myoboku</td>
+                <td>2010</td>
+                <td>98%</td>
+              </tr>
+              <tr>
+                <td>Ninja Academy Grad</td>
+                <td>Konoha Ninja Academy</td>
+                <td>2002</td>
+                <td>85%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="row-two-col">
+      <div id="projects">
+        <h3 class="section-title"><i class="fa-solid fa-briefcase"></i> Projects</h3>
+        <div class="projects-grid">
+          <div class="card">
+            <div>
+              <h4>1. Rasenshuriken</h4>
+              <p>Infusing wind-nature chakra into standard Rasengan rotation.</p>
+            </div>
+            <a href="#">View Mission</a>
+          </div>
+          <div class="card">
+            <div>
+              <h4>2. Shinobi Alliance</h4>
+              <p>Coordinated multi-nation forces during the 4th Great Ninja War.</p>
+            </div>
+            <a href="#">View Mission</a>
+          </div>
+          <div class="card">
+            <div>
+              <h4>3. Leaf Modernization</h4>
+              <p>Integrated modern ninja tech and infrastructure across the village.</p>
+            </div>
+            <a href="#">View Mission</a>
+          </div>
+        </div>
+
+        <div style="margin-top: 36px;">
+          <h3 class="section-title"><i class="fa-solid fa-link"></i> Connect with me</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="contact">
+        <h3 class="section-title"><i class="fa-solid fa-envelope"></i> Contact Me</h3>
+        <form class="contact-form" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" placeholder="Type your message..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">Send Message</button>
+            <button type="reset" class="btn-reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  
+  <footer>
+    &copy; 2026 Naruto Uzumaki. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
