@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        form { width: 400px; padding: 20px; border: 1px solid #cccccc; border-radius: 5px; }
+        div { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="email"], input[type="password"], select { width: 100%; padding: 8px; box-sizing: border-box; }
+        input[type="submit"] { background-color: #28a745; color: white; padding: 10px 15px; border: none; cursor: pointer; width: 100%; }
+    </style>
+</head>
+<body>
+    <form>
+        <h2>Register</h2>
+        
+        <div>
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div>
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male" style="display:inline; font-weight:normal;">Male</label>
+            <input type="radio" id="female" name="gender" value="female" style="margin-left: 15px;">
+            <label for="female" style="display:inline; font-weight:normal;">Female</label>
+        </div>
+
+        <div>
+            <label for="course">Select Course:</label>
+            <select id="course" name="course">
+                <option value="btech">B.Tech Computer Science</option>
+                <option value="bca">BCA</option>
+                <option value="mca">MCA</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms" style="display:inline; font-weight:normal;">I agree to the terms and conditions</label>
+        </div>
+
+        <div>
+            <input type="submit" value="Register">
+        </div>
+    </form>
+</body>
+</html>
